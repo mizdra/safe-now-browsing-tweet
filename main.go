@@ -2,20 +2,12 @@ package main
 
 import (
 	"fmt"
-	"net/http"
+
+	"github.com/mizdra/safe-now-browsing-tweet/util"
 )
 
-func IsPublicURL(url string) bool {
-	resp, err := http.Get(url) // TODO: set UA
-	if err != nil {
-		return false
-	}
-	defer resp.Body.Close()
-	return resp.StatusCode == 200
-}
-
 func main() {
-	fmt.Println("200", IsPublicURL("https://httpstat.us/200"))
-	fmt.Println("201", IsPublicURL("https://httpstat.us/201"))
-	fmt.Println("404", IsPublicURL("https://httpstat.us/404"))
+	fmt.Println("200", util.IsPublicURL("https://httpstat.us/200"))
+	fmt.Println("201", util.IsPublicURL("https://httpstat.us/201"))
+	fmt.Println("404", util.IsPublicURL("https://httpstat.us/404"))
 }
